@@ -140,7 +140,8 @@ class CFVariableMixin(object):
     @property
     def var_name(self):
         """The netCDF variable name for the object."""
-        return self._var_name
+        from iris.fileformats.netcdf import cf_valid_var_name
+        return cf_valid_var_name(self._var_name)
 
     @var_name.setter
     def var_name(self, name):

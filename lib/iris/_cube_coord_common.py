@@ -21,6 +21,7 @@ import six
 
 # TODO: Is this a mixin or a base class?
 
+import re
 import string
 
 import cf_units
@@ -150,6 +151,10 @@ class CFVariableMixin(object):
             elif set(name).intersection(string.whitespace):
                 raise ValueError('{!r} is not a valid netCDF variable name '
                                  'as it contains whitespace.'.format(name))
+            elif if re.match(r'^[^a-zA-Z]', var_name):
+                raise ValueError('The netCDF variable name must start with a '
+                                 'letter.)
+
         self._var_name = name
 
     @property

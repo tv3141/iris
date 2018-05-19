@@ -1362,7 +1362,7 @@ class Saver(object):
             A var_name suitable for passing through for variable creation.
 
         """
-        # Replace invalid charaters with an underscore ("_").
+        # Replace invalid characters with an underscore ("_").
         var_name = re.sub(r'[^a-zA-Z0-9]', "_", var_name)
         # Ensure the variable name starts with a letter.
         if re.match(r'^[^a-zA-Z]', var_name):

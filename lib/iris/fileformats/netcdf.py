@@ -1458,29 +1458,6 @@ class Saver(object):
                 cf_var.dimensions + (bounds_dimension_name,))
             cf_var_bounds[:] = bounds
 
-    def _get_cube_variable_name(self, cube):
-        """
-        Returns a CF-netCDF variable name for the given cube.
-
-        Args:
-
-        * cube (class:`iris.cube.Cube`):
-            An instance of a cube for which a CF-netCDF variable
-            name is required.
-
-        Returns:
-            A CF-netCDF variable name as a string.
-
-        """
-        if cube.var_name is not None:
-            cf_name = cube.var_name
-        else:
-            # Convert to lower case and replace whitespace by underscores.
-            cf_name = '_'.join(cube.name().lower().split())
-
-        cf_name = self.cf_valid_var_name(cf_name)
-        return cf_name
-
     def _get_coord_variable_name(self, cube, coord):
         """
         Returns a CF-netCDF variable name for the given coordinate.
@@ -1972,7 +1949,7 @@ class Saver(object):
                 if add_offset:
                     _setncattr(cfvar, 'add_offset', add_offset)
 
-        cf_name = self._get_cube_variable_name(cube)
+        cf_name = cube.var_name
         while cf_name in self._dataset.variables:
             cf_name = self._increment_name(cf_name)
 

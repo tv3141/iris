@@ -863,8 +863,7 @@ class Saver(object):
             matching keys will become attributes on the data variable rather
             than global attributes.
 
-        * unlimited_dimensions (iterable of strings and/or
-          :class:`iris.coords.Coord` objects):
+        * unlimited_dimensions (iterable of strings and/or :class:`iris.coords.Coord` objects):
             List of coordinate names (or coordinate objects)
             corresponding to coordinate dimensions of `cube` to save with the
             NetCDF dimension variable length 'UNLIMITED'. By default, no
@@ -2162,8 +2161,7 @@ def save(cube, filename, netcdf_format='NETCDF4', local_keys=None,
         matching keys will become attributes on the data variable rather
         than global attributes.
 
-    * unlimited_dimensions (iterable of strings and/or
-      :class:`iris.coords.Coord` objects):
+    * unlimited_dimensions (iterable of strings and/or :class:`iris.coords.Coord` objects):
         List of coordinate names (or coordinate objects) corresponding
         to coordinate dimensions of `cube` to save with the NetCDF dimension
         variable length 'UNLIMITED'. By default, no unlimited dimensions are

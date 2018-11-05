@@ -55,7 +55,6 @@ install:
 
   # Create the basic testing environment
   # ------------------------------------
-  # Explicitly add defaults channel, see https://github.com/conda/conda/issues/2675
   - >
     echo 'Configure conda and create an environment';
     conda config --set always_yes yes --set changeps1 no;

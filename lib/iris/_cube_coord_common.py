@@ -141,7 +141,7 @@ class CFVariableMixin(object):
     def var_name(self):
         """The netCDF variable name for the object."""
         from iris.fileformats.netcdf import cf_valid_var_name
-        
+
         if cube._var_name:
             return cf_valid_var_name(cube._var_name)
         else:
@@ -156,7 +156,7 @@ class CFVariableMixin(object):
             elif set(name).intersection(string.whitespace):
                 raise ValueError('{!r} is not a valid netCDF variable name '
                                  'as it contains whitespace.'.format(name))
-            elif if re.match(r'^[^a-zA-Z]', var_name):
+            elif re.match(r'^[^a-zA-Z]', var_name):
                 raise ValueError('The netCDF variable name must start with a '
                                  'letter.)
 

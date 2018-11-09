@@ -23,7 +23,8 @@ env:
     - secure: "N9/qBUT5CqfC7KQBDy5mIWZcGNuUJk3e/qmKJpotWYV+zwOI4GghJsRce6nFnlRiwl65l5oBEcvf3+sBvUfbZqh7U0MdHpw2tHhr2FSCmMB3bkvARZblh9M37f4da9G9VmRkqnyBM5G5TImXtoq4dusvNWKvLW0qETciaipq7ws="
 
 git:
-  # We need a deep clone so that we can compute the age of the files using their git history.
+  # We need a deep clone so that we can compute the age of the files using their
+  # git history.
   depth: 10000
 
 install:
@@ -93,8 +94,8 @@ install:
     conda list -n $ENV_NAME --explicit;
     conda info -a;
 
-  # Pre-load Natural Earth data to avoid multiple, overlapping downloads.
-  # i.e. There should be no DownloadWarning reports in the log.
+  # Pre-load Natural Earth data to avoid multiple, overlapping downloads, i.e.
+  # there should be no DownloadWarning reports in the log.
   - python -c 'import cartopy; cartopy.io.shapereader.natural_earth()'
 
   # iris test data
@@ -145,7 +146,8 @@ script:
       make clean html && make doctest;
     fi
 
-  # Split the organisation out of the slug. See https://stackoverflow.com/a/5257398/741316 for description.
+  # Split the organisation out of the slug. See
+  # https://stackoverflow.com/a/5257398/741316 for description.
   - ORG=(${TRAVIS_REPO_SLUG//\// })
 
   # When we merge a change, and we are running in python 3, push some docs. 
@@ -158,8 +160,8 @@ script:
         ${TRAVIS_BRANCH:-${TRAVIS_TAG}};
     fi
 
-  # An extra call to check "whatsnew" contributions are valid, because the
-  # Iris test for it needs a *developer* install to be able to find the docs.
+  # An extra call to check "whatsnew" contributions are valid, because the Iris
+  # test for it needs a *developer* install to be able to find the docs.
   - if [[ $TEST_TARGET == 'doctest' ]]; then
       cd $INSTALL_DIR/docs/iris/src/whatsnew;
       python aggregate_directory.py --checkonly;

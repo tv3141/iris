@@ -160,9 +160,11 @@ def delta(ndarray, dimension, circular=False):
         _delta = np.roll(ndarray, -1, axis=dimension)
         last_element = [slice(None, None)] * ndarray.ndim
         last_element[dimension] = slice(-1, None)
+        last_element = tuple(last_element)
 
         if not isinstance(circular, bool):
-            result = np.where(ndarray[last_element] >= _delta[last_element])[0]
+            result = np.where(
+                ndarray[last_element] >= _delta[last_element])[0]
             _delta[last_element] -= circular
             _delta[last_element][result] += 2*circular
 

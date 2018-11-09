@@ -1336,6 +1336,7 @@ def _peak(array, **kwargs):
     # Collapse array to its final data shape.
     slices = [slice(None)] * array.ndim
     slices[-1] = 0
+    slices = tuple(slices)
 
     if isinstance(array.dtype, np.float):
         data = array[slices]

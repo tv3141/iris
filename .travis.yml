@@ -37,8 +37,8 @@ before_install:
   # ------------
   - >
     if [[ $TEST_TARGET == 'doctest' && ${TRAVIS_PYTHON_VERSION} != 3* ]]; then
-        echo "DOCTEST phase only valid in Python 3 : ABORTING during 'install'."
-        exit 0
+      echo "DOCTEST phase only valid in Python 3 : ABORTING during 'install'."
+      exit 0
     fi
 
   # Install miniconda
@@ -73,13 +73,13 @@ before_install:
     CONDA_REQS_FLAGS="";
     CONDA_REQS_GROUPS="test";
     if [[ "$TRAVIS_PYTHON_VERSION" == 2* ]]; then
-        CONDA_REQS_FLAGS="${CONDA_REQS_FLAGS} --py2";
+      CONDA_REQS_FLAGS="${CONDA_REQS_FLAGS} --py2";
     fi;
     if [[ "$TEST_MINIMAL" != true ]]; then
-        CONDA_REQS_GROUPS="${CONDA_REQS_GROUPS} all";
+      CONDA_REQS_GROUPS="${CONDA_REQS_GROUPS} all";
     fi;
     if [[ "${TEST_TARGET}" == 'doctest' ]]; then
-        CONDA_REQS_GROUPS="${CONDA_REQS_GROUPS} docs";
+      CONDA_REQS_GROUPS="${CONDA_REQS_GROUPS} docs";
     fi;
     CONDA_REQS_FILE=conda-requirements.txt;
     python requirements/gen_conda_requirements.py ${CONDA_REQS_FLAGS} --groups ${CONDA_REQS_GROUPS} > ${CONDA_REQS_FILE};
@@ -121,8 +121,8 @@ install:
   # JUST FOR NOW : Install latest version of iris-grib.
   # TODO : remove when iris doesn't do an integration test requiring iris-grib.
   - if [[ "$TEST_MINIMAL" != true && ${TRAVIS_PYTHON_VERSION} == 2* ]]; then
-        conda install --quiet -n $ENV_NAME python-ecmwf_grib;
-        pip install git+https://github.com/SciTools/iris-grib.git@v0.11.0;
+      conda install --quiet -n $ENV_NAME python-ecmwf_grib;
+      pip install git+https://github.com/SciTools/iris-grib.git@v0.11.0;
     fi
 
 script:

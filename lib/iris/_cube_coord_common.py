@@ -158,7 +158,7 @@ class CFVariableMixin(object):
                                  'as it contains whitespace.'.format(name))
             elif re.match(r'^[^a-zA-Z]', var_name):
                 raise ValueError('The netCDF variable name must start with a '
-                                 'letter.)
+                                 'letter.')
 
         self._var_name = name
 

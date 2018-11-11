@@ -115,7 +115,7 @@ install:
     echo "[System]" >> $SITE_CFG;
     echo "udunits2_path = $PREFIX/lib/libudunits2.so" >> $SITE_CFG;
 
-  - python setup.py --quiet install
+  - python setup.py install
 
   # JUST FOR NOW : Install latest version of iris-grib.
   # TODO : remove when iris doesn't do an integration test requiring iris-grib.

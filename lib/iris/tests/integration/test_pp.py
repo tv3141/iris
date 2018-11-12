@@ -389,6 +389,7 @@ class TestVertical(tests.IrisTest):
                 warnings.simplefilter("always")
                 data_cube, = iris.fileformats.pp.load_cubes('DUMMY')
 
+                print([_w.message for _w in w])
                 assert len(w) == 1
                 assert issubclass(w[-1].category, IrisUserWarning)
                 msg = ("Unable to create instance of HybridHeightFactory. "

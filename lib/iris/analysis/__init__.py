@@ -1338,10 +1338,10 @@ def _peak(array, **kwargs):
     slices[-1] = 0
 
     if isinstance(array.dtype, np.float):
-        data = array[slices]
+        data = array[tuple(slices)]
     else:
         # Cast non-float data type.
-        data = array.astype('float32')[slices]
+        data = array.astype('float32')[tuple(slices)]
 
     # Generate nd-index iterator over array.
     shape = list(array.shape)

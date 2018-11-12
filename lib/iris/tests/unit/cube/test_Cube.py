@@ -402,8 +402,8 @@ class Test_collapsed__warning(tests.IrisTest):
             warnings.simplefilter('always')
             self.cube.collapsed(coords, aggregator)
 
-        coords = [coord for coord in coords if 'latitude' in coord]
-        self._assert_warn_collapse_without_weight(coords, warn)
+            coords = [coord for coord in coords if 'latitude' in coord]
+            self._assert_warn_collapse_without_weight(coords, warn)
 
     def test_no_lat_weighted_aggregator_mixed(self):
         # Collapse grid_latitude and an unmatched coordinate (not lat/lon)

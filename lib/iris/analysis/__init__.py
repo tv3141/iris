@@ -1335,14 +1335,13 @@ def _peak(array, **kwargs):
 
     # Collapse array to its final data shape.
     slices = [slice(None)] * array.ndim
-    n = array.shape[-1]
-    slices[-1] = slice(0, n, n)
+    slices[-1] = 0
 
     if isinstance(array.dtype, np.float):
-        data = array[tuple(slices)]
+        data = np.array(array[tuple(slices)])
     else:
         # Cast non-float data type.
-        data = array.astype('float32')[tuple(slices)]
+        data = np.array(array.astype('float32')[tuple(slices)], dtype='float32')
 
     # Generate nd-index iterator over array.
     shape = list(array.shape)
